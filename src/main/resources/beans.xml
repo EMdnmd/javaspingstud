@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+
+    <!--bean就是java对象 , 由Spring创建和管理-->
+        <bean id="hello" class="servlet.hello">
+        <property name="name" value="Spring"/>
+        </bean>
+        <bean id="mysql"  class="servlet.mysql"></bean>
+        <bean id="user" class="servlet.user"></bean>
+        <bean   id="userServic" class="servlet.userServic">
+            <property  name="userdao" ref="user">
+            </property>
+        </bean>
+        <bean id="userT" class="servlet.userT">
+            <constructor-arg name="user" value="李白"/>
+        </bean>
+    <bean id="address" class="servlet.address">
+       <property name="address"  value="西安"></property>
+    </bean>
+    <bean id="student"  class="servlet.student">
+            <property name="name"  value="小明"></property>
+            <property name="address" ref="address"></property>
+            <!-- 数组注入  -->
+            <property name="books">
+                 <array>
+                     <value>西游记</value>
+                     <value>三国演义</value>
+                     <value>红楼梦</value>
+                 </array>
+            </property>
+        <property name="hobbys">
+            <list>
+                <value>pupil</value>
+                <value>man</value>
+                <value>water</value>
+            </list>
+        </property>
+        <property name="card">
+            <map>
+                <entry key="电话号码" value="18220339344"></entry>
+                <entry key="QQ号" value="2712908981"></entry>
+            </map>
+        </property>
+        <property name="games">
+            <set>
+                <value>find</value>
+                <value>think</value>
+            </set>
+        </property>
+        <property name="wife" ><null/></property>
+        <property name="info">
+            <props>
+                <prop key="学号">30602190514</prop>
+                <prop key="姓名">张恒瑞</prop>
+                <prop key="班级">软件3195</prop>
+
+            </props>
+        </property>
+
+    </bean>
+
+
+</beans>
